@@ -4,13 +4,7 @@ export async function onRegister(event) {
   event.preventDefault();
   const form = event.target;
   const data = new FormData(form);
-  const payload = Object.fromEntries(data.entries());
-  console.log(payload.name);
-  let name = payload.name;
-  let email = payload.email;
-  let password = payload.password;
-  let bio = "";
-  let banner = "";
-  let avatar = "";
-  register({ name, email, password, bio, banner, avatar });
+  const userInput = Object.fromEntries(data.entries());
+
+  register(userInput.name, userInput.email, userInput.password);
 }
