@@ -2,12 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noroff FED2 JS2 CA</title>
+    <link rel="stylesheet" href="/src/styles.css" />
     <script type="module" src="/src/app.js"></script>
   </head>
+
   <body>
-    <h1>Post Page</h1>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/"
+              ><img src="/images/noroff-logo.png" alt="Noroff Logo"
+            /></a>
+          </li>
+          <li><a href="/profile/">My Profile</a></li>
+          <li><a href="/auth/login/">Login</a></li>
+          <li><a href="/auth/register/">Register</a></li>
+          <li>
+            <form name="logout" action="/" method="post">
+              <input type="submit" value="Logout" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="posts-container">
+          <div id="loading"></div>
+        </div>
+        <p class="text-center">
+          <a href="javascript:history.back()">Back to all posts</a>
+        </p>
+      </div>
+    </main>
   </body>
 </html>

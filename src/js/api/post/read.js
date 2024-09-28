@@ -1,8 +1,38 @@
 import { headers } from "../headers";
 import { API_SOCIAL_POSTS } from "../constants";
-const postsContainer = document.querySelector(".posts");
+const postsContainer = document.querySelector(".posts-container");
 
-export async function readPost(id) {}
+export async function readPost(id) {
+  if (!id) {
+    window.location.href = "/";
+  }
+
+  const response = await fetch(API_SOCIAL_POSTS + `/${id}?_author=true`, {
+    headers: headers(),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status} ${response.statusText}`);
+  }
+
+  const result = await response.json();
+  console.log(result);
+
+  postsContainer.innerHTML = "";
+
+  let mediaUrl = "";
+  if (result.data.media) {
+    mediaUrl = `<img src="${result.data.media.url}" alt="${result.data.media.alt}" class="post-image">`;
+  }
+  postsContainer.innerHTML += `
+  <div class="post-container">
+    <h1>${result.data.title}</h1> 
+    <p>${result.data.body}</p>
+    ${mediaUrl}
+    <p class="author-small-text"><em>by: ${result.data.author.name}</em></p>
+  </div>
+`;
+}
 
 export async function readPosts(limit = 12, page = 1, tag) {
   if (limit) {
@@ -17,7 +47,6 @@ export async function readPosts(limit = 12, page = 1, tag) {
   }
 
   const result = await response.json();
-  console.log(result.data[0].title);
 
   postsContainer.innerHTML = "";
   for (let i = 0; i < result.data.length; i++) {
@@ -30,7 +59,7 @@ export async function readPosts(limit = 12, page = 1, tag) {
 
     postsContainer.innerHTML += `
           <div class="post-container">
-            <a href="/post/${result.data[i].id}"><h3>${result.data[i].title}</h3></a>
+            <a href="/post/?id=${result.data[i].id}"><h3>${result.data[i].title}</h3></a>
             <p>${result.data[i].body}</p>
             ${mediaUrl}
             <p class="author-small-text"><em>by: ${result.data[i].author.name}</em></p>
