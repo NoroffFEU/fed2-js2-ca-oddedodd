@@ -1,22 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noroff FED2 JS2 CA</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/app.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/"
+              ><img src="/images/noroff-logo.png" alt="Noroff Logo"
+            /></a>
+          </li>
+          <li><a href="/profile/">My Profile</a></li>
+          <li><a href="/auth/login/">Login</a></li>
+          <li><a href="/auth/register/">Register</a></li>
+          <li>
+            <form name="logout" action="/" method="post">
+              <input type="submit" value="Logout" />
+            </form>
+          </li>
+        </ul>
+      </nav>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noroff FED2 JS2 CA</title>
-  <script type="module" src="/src/app.js"></script>
-</head>
-
-<body>
-  <img src="/images/noroff-logo.png" alt="Noroff Logo" />
-
-  <h1>Home</h1>
-
-  <a href="/profile/">My Profile</a>
-  <a href="/auth/login/">Login</a>
-  <a href="/auth/register/">Register</a>
-  <button>Logout</button>
-</body>
+      <h1>Noroff FED SoMe</h1>
+      <p>Welcome to the Noroff FED2 JS2 CA - Social Media client</p>
+    </header>
+    <main>
+      <!-- Create Post Form Container -->
+      <div class="create-post-container">
+        <h2>Create a New Post</h2>
+        <form id="create-post-form">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter post title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="body">Body:</label>
+            <textarea
+              id="body"
+              name="body"
+              rows="4"
+              placeholder="Write your post content here"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="media">Media/Image URL:</label>
+            <input
+              type="url"
+              id="media"
+              name="media"
+              placeholder="Enter image or media URL (optional)"
+            />
+          </div>
+          <button type="submit">Create Post</button>
+        </form>
+      </div>
+      <div class="container">
+        <h2>Latest posts</h2>
+        <div class="posts">
+          <div id="loading"></div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

@@ -17,10 +17,3 @@ export const API_SOCIAL = `${API_BASE}/social`;
 export const API_SOCIAL_POSTS = `${API_SOCIAL}/posts`;
 
 export const API_SOCIAL_PROFILES = `${API_SOCIAL}/profiles`;
-
-// const options = {
-//   headers: {
-//     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoib2RkZWRvZGQiLCJlbWFpbCI6Im9kZHNlbDgxODE5QHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzI3MzU3NDI3fQ.Lzuv58Sg-NjGSH3qNEfuxSqKQH2_glrkfQbAXmUKm1o',
-//     'X-Noroff-API-Key': '70f2f2aa-fe0f-4d95-866d-6b8fa3832ddb'
-//   }
-// };

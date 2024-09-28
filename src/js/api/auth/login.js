@@ -16,10 +16,7 @@ export async function login({ email, password }) {
     localStorage.setItem("token", accessToken);
     localStorage.setItem("profile", profile);
 
-    return profile;
-
-    console.log("User logged in");
-    console.log(profile);
+    window.location.href = "/";
   } else {
     console.log("Error logging in user");
   }

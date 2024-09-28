@@ -2,9 +2,7 @@ import { headers } from "../headers";
 import { API_SOCIAL_POSTS } from "../constants";
 const postsContainer = document.querySelector(".posts");
 
-export async function readPost(id) {}
-
-export async function readPosts(limit = 12, page = 1, tag) {
+export async function getAllPosts(limit = "") {
   if (limit) {
     console.log(`Limit is ${limit}`);
   }
@@ -41,5 +39,3 @@ export async function readPosts(limit = 12, page = 1, tag) {
     }
   }
 }
-
-export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
