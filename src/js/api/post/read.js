@@ -4,6 +4,15 @@ import { deletePost } from "./delete";
 const postsContainer = document.querySelector(".posts-container");
 const loggedInUser = localStorage.getItem("username");
 
+/**
+ * Fetches and displays a single post by ID.
+ *
+ * - Redirects to the home page if no ID is provided.
+ * - Shows "Edit" and "Delete" links if the logged-in user is the author.
+ * - Binds the delete functionality to the "Delete" link.
+ *
+ * @param {string|number} id - The ID of the post to read.
+ */
 export async function readPost(id) {
   if (!id) {
     window.location.href = "/";
@@ -53,6 +62,11 @@ export async function readPost(id) {
   }
 }
 
+/**
+ * Fetches post data by ID and populates form fields for editing.
+ *
+ * @param {string|number} id - The ID of the post to read and edit.
+ */
 export async function readPostEdit(id) {
   if (!id) {
     window.location.href = "/";
@@ -81,10 +95,17 @@ export async function readPostEdit(id) {
   mediaEdit.value = result.data.media.url;
 }
 
-export async function readPosts(limit = 120, page = 1, tag) {
-  if (limit) {
-    console.log(`Limit is ${limit}`);
-  }
+/**
+ * Fetches and displays a list of posts with an optional limit.
+ *
+ * - Stops fetching when the limit is reached.
+ * - Shows each post with a link to the uniqe post page.
+ *
+ * @param {number} [limit=12] - Maximum number of posts to display.
+ * @param {number} [page=1] - Page number for pagination (currently unused).
+ * @param {string} [tag] - Tag to filter posts (currently unused).
+ */
+export async function readPosts(limit = 12, page = 1, tag) {
   const response = await fetch(API_SOCIAL_POSTS + `/?_author=true`, {
     headers: headers(),
   });
@@ -97,8 +118,6 @@ export async function readPosts(limit = 120, page = 1, tag) {
 
   postsContainer.innerHTML = "";
   for (let i = 0; i < result.data.length; i++) {
-    console.log(result.data[i]);
-
     let mediaUrl = "";
     if (result.data[i].media) {
       mediaUrl = `<img src="${result.data[i].media.url}" alt="${result.data[i].media.alt}" class="post-image">`;
@@ -118,4 +137,7 @@ export async function readPosts(limit = 120, page = 1, tag) {
   }
 }
 
+/**
+ * Placeholder for fetching posts by a specific user.
+ */
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {}

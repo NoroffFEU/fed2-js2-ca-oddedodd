@@ -21,7 +21,7 @@ export async function updatePost(id, postData) {
   });
 
   if (!response.ok) {
-    console.log("Error creating post");
+    console.log("Error updating post");
   }
   alert("Post updated successfully!");
   window.location.href = "/post/?id=" + id;

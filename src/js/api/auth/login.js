@@ -1,4 +1,5 @@
 import { API_AUTH_LOGIN } from "../constants";
+
 /**
  * Logs in a user using the provided email and password.
  *
@@ -9,6 +10,7 @@ import { API_AUTH_LOGIN } from "../constants";
  *
  * @param {string} email - The user's email address.
  * @param {string} password - The user's password.
+ * @returns {Promise<void>} A promise that resolves when the registration process is complete.
  */
 export async function login({ email, password }) {
   const response = await fetch(API_AUTH_LOGIN, {
