@@ -1,16 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Create Post - Noroff FED2 JS2 CA</title>
+    <link rel="stylesheet" href="../src/styles.css" />
     <script type="module" src="/src/app.js"></script>
   </head>
-  <body>
-    <h1>Create Post</h1>
 
-    <form name="createPost">
-      <button>Create Post</button>
-    </form>
+  <body>
+
+    <main>
+       <!-- Create Post Form Container -->
+       <div class="create-post-container">
+        <h1>Create a New Post</h1>
+        <form name="createPost" id="create-post-form" action="/post/create/" method="post">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter post title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="body">Body:</label>
+            <textarea
+              id="body"
+              name="body"
+              rows="4"
+              placeholder="Write your post content here"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="title">Tags:</label>
+            <input
+              type="text"
+              id="tags"
+              name="tags"
+              placeholder="tags, separated, by, commas"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="media">Media/Image URL:</label>
+            <input
+              type="url"
+              id="media"
+              name="media"
+              placeholder="Enter image or media URL (optional)"
+            />
+          </div>
+          <input type="submit" value="Create post">
+        </form>
+      </div>
   </body>
 </html>
