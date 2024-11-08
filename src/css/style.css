@@ -1,1 +1,207 @@
-@import url(_reset.css);
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  justify-content: center;
+  align-items: flex-start; /* Align content at the top */
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+/* Center content and set spacing */
+header {
+  text-align: center;
+  margin: 20px;
+}
+
+/* Navigation bar styles */
+nav {
+  width: 95%;
+  max-width: 900px;
+  margin: auto;
+  background: #e6e6e6; /* Light grey background */
+  padding: 15px;
+  border-radius: 8px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a,
+nav ul li form input[type="submit"] {
+  color: #333333; /* Dark grey text */
+  text-decoration: none;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+nav ul li a:hover,
+nav ul li form input[type="submit"]:hover {
+  color: #666666;
+}
+
+nav img {
+  height: 30px;
+  vertical-align: middle;
+}
+
+/* Header content */
+header h1 {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+header p {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Post styles */
+.posts {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.post-container {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.post h3 {
+  margin: 0 0 10px;
+}
+
+.post p {
+  margin: 5px 0;
+}
+
+.author-small-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.post-image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+main {
+  width: 95%;
+  max-width: 900px;
+  margin: 40px auto 20px; /* Spacing between header and main */
+  padding: 20px;
+}
+
+#loading {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  border-top-color: #272121;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* Container for Create Post Form */
+.create-post-container {
+  width: 95%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.create-post-container h2 {
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#create-post-form .form-group {
+  margin-bottom: 20px;
+}
+
+/* Label Styles */
+#create-post-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333; /* Dark grey label text */
+}
+
+/* Input and Textarea Field Styles */
+#create-post-form input[type="text"],
+#create-post-form input[type="url"],
+#create-post-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box;
+  font-size: 16px;
+  outline: none; /* Remove outline on focus */
+  transition: border 0.3s ease; /* Smooth transition */
+}
+
+/* Focus State for Input Fields */
+#create-post-form input[type="text"]:focus,
+#create-post-form input[type="url"]:focus,
+#create-post-form textarea:focus {
+  border-color: #0073e6; /* Change border color on focus */
+}
+
+/* Button Styling */
+#create-post-form button {
+  display: block;
+  width: 100%; /* Full width button */
+  padding: 12px;
+  border: none;
+  background-color: #0073e6; /* Blue background */
+  color: white;
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover State for Submit Button */
+#create-post-form button:hover {
+  background-color: #005bb5; /* Darker shade of blue on hover */
+}
