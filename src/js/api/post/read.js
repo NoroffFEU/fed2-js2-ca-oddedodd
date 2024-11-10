@@ -29,25 +29,34 @@ export async function readPost(id) {
   const result = await response.json();
 
   postsContainer.innerHTML = "";
-
+  console.log(result.data);
   let mediaUrl = "";
   if (result.data.media) {
-    mediaUrl = `<img src="${result.data.media.url}" alt="${result.data.media.alt}" class="post-image">`;
+    mediaUrl = `<img src="${result.data.media.url}" alt="${result.data.media.alt}" class="w-full">`;
+  }
+  let avatarUrl = "";
+  if (result.data.author.avatar) {
+    avatarUrl = `<img src="${result.data.author.avatar.url}" alt="${result.data.author.avatar.alt}" class="rounded-full w-4">`;
   }
 
   let editDeleteLink = "";
   if (loggedInUser === result.data.author.name) {
     editDeleteLink = `
-    <p><a href="/post/edit/?id=${result.data.id}">Edit post</a> – <a href="#" id="delete-post-link" data-id="${result.data.id}">Delete post</a></p>
+    <p><a href="/post/edit/?id=${result.data.id}" class="bg-blue-500 text-white w-full sm:w-auto text-center px-4 py-2 rounded-md shadow hover:bg-blue-600 transition">Edit post</a> <a href="#" id="delete-post-link" data-id="${result.data.id}" class="bg-red-500 text-white w-full sm:w-auto text-center px-4 py-2 rounded-md shadow hover:bg-red-600 transition">Delete post</a></p>
     `;
   }
   postsContainer.innerHTML += `
-  <div class="post-container">
-    <h1>${result.data.title}</h1> 
-    <p>${result.data.body}</p>
-    ${mediaUrl}
-    <p class="author-small-text"><em>by: ${result.data.author.name}</em></p>
+  <div class="post-container bg-white p-6 rounded-lg shadow-md animate-fade-in mb-6">
+    <h1 class="text-3xl font-bold break-words">${result.data.title}</h1> 
+    <p class="pt-4 mb-4 break-words">${result.data.body}</p>
+    <div class="mt-4 mb-4">${mediaUrl}</div>
+    <div class="flex items-center space-x-2 mt-4">
+      ${avatarUrl}
+      <p class="text-sm italic">${result.data.author.name}</p>
+      </div>
+    <div class="flex items-center justify-center space-x-2 mt-4">
     ${editDeleteLink}
+    </div>
   </div>
 `;
 
@@ -99,7 +108,7 @@ export async function readPostEdit(id) {
  * Fetches and displays a list of posts with an optional limit.
  *
  * - Stops fetching when the limit is reached.
- * - Shows each post with a link to the uniqe post page.
+ * - Shows each post with a link to the post page.
  *
  * @param {number} [limit=12] - Maximum number of posts to display.
  * @param {number} [page=1] - Page number for pagination (currently unused).
@@ -122,13 +131,20 @@ export async function readPosts(limit = 12, page = 1, tag) {
     if (result.data[i].media) {
       mediaUrl = `<img src="${result.data[i].media.url}" alt="${result.data[i].media.alt}" class="post-image w-full">`;
     }
+    let avatarUrl = "";
+    if (result.data[i].author.avatar) {
+      avatarUrl = `<img src="${result.data[i].author.avatar.url}" alt="${result.data[i].author.avatar.alt}" class="rounded-full w-4">`;
+    }
 
     postsContainer.innerHTML += `
           <div class="post-container bg-white p-6 rounded-lg shadow-md animate-fade-in mb-6">
-            <a href="/post/?id=${result.data[i].id}"><h3 class="text-3xl font-bold hover:underline">${result.data[i].title}</h3></a>
-            <p>${result.data[i].body}</p>
-            ${mediaUrl}
-            <p class="text-sm italic">by: ${result.data[i].author.name}</p>
+            <a href="/post/?id=${result.data[i].id}"><h3 class="text-3xl font-bold break-words hover:underline">${result.data[i].title}</h3></a>
+            <p class="pt-4 mb-4 break-words">${result.data[i].body}</p>
+            <div class="mt-4 mb-4">${mediaUrl}</div>
+            <div class="flex items-center space-x-2 mt-4">
+              ${avatarUrl}
+              <p class="text-sm italic">${result.data[i].author.name}</p>
+            </div>
           </div>
     `;
     if (limit && i >= limit - 1) {
