@@ -120,15 +120,15 @@ export async function readPosts(limit = 12, page = 1, tag) {
   for (let i = 0; i < result.data.length; i++) {
     let mediaUrl = "";
     if (result.data[i].media) {
-      mediaUrl = `<img src="${result.data[i].media.url}" alt="${result.data[i].media.alt}" class="post-image">`;
+      mediaUrl = `<img src="${result.data[i].media.url}" alt="${result.data[i].media.alt}" class="post-image w-full">`;
     }
 
     postsContainer.innerHTML += `
-          <div class="post-container">
-            <a href="/post/?id=${result.data[i].id}"><h3>${result.data[i].title}</h3></a>
+          <div class="post-container bg-white p-6 rounded-lg shadow-md animate-fade-in mb-6">
+            <a href="/post/?id=${result.data[i].id}"><h3 class="text-3xl font-bold hover:underline">${result.data[i].title}</h3></a>
             <p>${result.data[i].body}</p>
             ${mediaUrl}
-            <p class="author-small-text"><em>by: ${result.data[i].author.name}</em></p>
+            <p class="text-sm italic">by: ${result.data[i].author.name}</p>
           </div>
     `;
     if (limit && i >= limit - 1) {

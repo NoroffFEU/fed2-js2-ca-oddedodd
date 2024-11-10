@@ -9,33 +9,66 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="/"
-              ><img src="/images/noroff-logo.png" alt="Noroff Logo"
-            /></a>
-          </li>
-          <li><a href="/post/create/" class="button">Create Post</a></li>
-          <li>
-            <form name="logout" action="/" method="post">
-              <input type="submit" value="Logout" />
-            </form>
-          </li>
-        </ul>
-      </nav>
-
-      <h1>Noroff FED SoMe</h1>
-      <p>Welcome to the Noroff FED2 JS2 CA - Social Media client</p>
-    </header>
-    <main>
-      <div class="container">
-        <h2>Latest posts</h2>
-        <div class="posts-container">
-          <div id="loading"></div>
+    <div
+      class="min-h-screen bg-gray-100 flex flex-col items-center px-4 sm:px-6 lg:px-8"
+    >
+      <header
+        class="w-full max-w-4xl flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-lg shadow-md mt-8 space-y-4 sm:space-y-0 animate-slide-in-down"
+      >
+        <!-- Logo Section -->
+        <div
+          class="flex items-center justify-center sm:justify-start w-full sm:w-auto"
+        >
+          <img
+            src="/images/noroff-logo.png"
+            alt="Noroff logo"
+            class="w-48 sm:w-52"
+          />
         </div>
-      </div>
-    </main>
+
+        <!-- Button and Form Section -->
+        <div
+          class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center sm:justify-end items-center w-full sm:w-auto"
+        >
+          <!-- Create Post Button -->
+          <a
+            href="/post/create/"
+            class="bg-blue-500 text-white w-full sm:w-auto text-center px-4 py-2 rounded-md shadow hover:bg-blue-600 transition"
+          >
+            Create Post
+          </a>
+
+          <!-- Logout Form -->
+          <form name="logout" action="/" method="post" class="w-full sm:w-auto">
+            <input
+              type="submit"
+              value="Logout"
+              class="bg-red-500 text-white w-full sm:w-auto text-center px-4 py-2 rounded-md shadow hover:bg-red-600 transition cursor-pointer"
+            />
+          </form>
+        </div>
+      </header>
+
+      <!-- Feed Section -->
+      <main class="w-full max-w-4xl mt-6 space-y-6">
+        <!-- Welcome Text -->
+        <div
+          class="text-center bg-white p-6 rounded-lg shadow-md animate-fade-in"
+        >
+          <h2 class="text-xl font-semibold text-gray-800">Your Feed</h2>
+          <p class="text-gray-500">
+            Catch up on the latest updates from your network.
+          </p>
+        </div>
+
+        <!-- Dynamic Feed Container -->
+        <div class="container">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Latest posts</h2>
+          <div class="posts-container">
+            <div id="loading" class="text-center text-gray-500">Loading...</div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
